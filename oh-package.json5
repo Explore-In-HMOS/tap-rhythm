@@ -1,0 +1,10 @@
+{
+  "modelVersion": "5.1.0",
+  "description": "Please describe the basic information.",
+  "dependencies": {
+    "@ywl5320/libwlmedia": "^4.2.0"
+  },
+  "devDependencies": {
+  },
+  "dynamicDependencies": {}
+}
