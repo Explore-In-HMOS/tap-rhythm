@@ -1,6 +1,6 @@
-import { AudioModelKit } from "../model/AudioModel";
-import { RhythmModel } from "../model/RhythmModel";
-import { NotificationKitUtils } from "../model/VibratorModel";
+import { AudioModelKit } from '../model/AudioModel';
+import { RhythmModel } from '../model/RhythmModel';
+import { NotificationKitUtils } from '../model/VibratorModel';
 
 
 export class TapRhythmViewModel {
@@ -8,8 +8,8 @@ export class TapRhythmViewModel {
   private vibrator = new NotificationKitUtils();
   private rhythm = new RhythmModel();
 
-  constructor() {
-    this.audio.playerInit()
+  constructor(context:Context) {
+    this.audio.playerInit(context)
   }
 
   bpm: number = 120;
@@ -17,12 +17,12 @@ export class TapRhythmViewModel {
   pulseColor: string = '#00FFAA';
   lastTapTime: number = 0;
 
-  async onTap(uiContext: UIContext) {
+  async onTap(uiContext: UIContext,context:Context) {
     const result = this.rhythm.analyzeTap();
     this.accuracy = Math.round(result.accuracy);
     this.lastTapTime = Date.now();
 
-    this.playClick()
+    this.playClick(context)
     this.vibrator.startNotification(uiContext)
 
     // renge göre tepki
@@ -41,7 +41,7 @@ export class TapRhythmViewModel {
     this.rhythm.setTargetBpm(bpm);
   }
 
-  async playClick() {
-    await this.audio.player();
+  async playClick(context:Context) {
+    await this.audio.player(context);
   }
 }

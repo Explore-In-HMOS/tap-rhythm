@@ -6,10 +6,13 @@ By tapping the screen in rhythm, users can practice staying on beat while the ap
 # Preview
 
 <div style="display:flex;  align : left;">
-<img src='screenshots/png1.png' width="24%"/>
-<img src='screenshots/png2.png' width="24%" />
-<img src='screenshots/png3.png' width="24%"/>
-<img src='screenshots/png4.png' width="24%"/>
+<img src='screenshots/png1.png' style="width:24%;"/>
+<img src='screenshots/png2.png' style="width:24%;" />
+
+
+
+<img src='screenshots/png3.png' style="width:24%;"/>
+<img src='screenshots/png4.png' style="width:24%"/>
 </div>
 
 # Use Cases
@@ -26,7 +29,9 @@ Users can use this application to training for rhythm.
     - @kit.AbilityKit
     - Canvas (ArcGraphic)
     - Ohpm Libwlmedia
-  
+
+# Directory Structure
+
 ```
 ├───entryability
 │       EntryAbility.ets
@@ -58,4 +63,4 @@ Users can use this application to training for rhythm.
 # LICENSE
 
 TapRhythm is distributed under the terms of the MIT License.
-See the [LICENSE](/LICENSE) for more information.
+See the [LICENSE](./LICENSE) for more information.

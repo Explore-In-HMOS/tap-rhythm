@@ -24,8 +24,8 @@ export class RhythmModel {
     const diff = Math.abs(actualInterval - expectedInterval);
 
     let accuracy = 100 - (diff / expectedInterval) * 100;
-    if (accuracy < 0) accuracy = 0;
-    if (accuracy > 100) accuracy = 100;
+    if (accuracy < 0) {accuracy = 0;}
+    if (accuracy > 100) {accuracy = 100;}
     accuracy = Math.round(accuracy);
 
     this.lastTap = now;

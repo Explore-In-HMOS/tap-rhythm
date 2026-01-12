@@ -4,16 +4,18 @@ import {
   WlCompleteType,
   WlComponentController,
   WlLoadStatus,
-  WlPlayer,
+  WlPlayer
 } from '@ywl5320/libwlmedia';
+
 import { FileUtil } from '../utils/FileUtil';
 
 export class AudioModelKit {
   private wlComponentController: WlComponentController | null = null;
   private wlPlayer: WlPlayer | null = null;
- playerInit(){
-   const filesDir = getContext().filesDir;
-   FileUtil.resourcesFile2SandboxFile('testvideos/click.mp3', filesDir + '/click.mp3');
+
+  playerInit(context:Context){
+    const filesDir = context.filesDir;
+    FileUtil.resourcesFile2SandboxFile(`testvideos/click.mp3`, `${filesDir}` + `/click.mp3`,context);
     this.wlPlayer = new WlPlayer();
     this.wlPlayer.setOnMediaInfoListener({
       onPrepared: (): void => {
@@ -23,17 +25,17 @@ export class AudioModelKit {
 
       },
       onComplete: (complete: WlCompleteType, msg: string): void => {
-        if (complete == WlCompleteType.WL_COMPLETE_EOF) {
+        if (complete === WlCompleteType.WL_COMPLETE_EOF) {
 
-        } else if (complete == WlCompleteType.WL_COMPLETE_ERROR) {
+        } else if (complete === WlCompleteType.WL_COMPLETE_ERROR) {
 
-        } else if (complete == WlCompleteType.WL_COMPLETE_HANDLE) {
+        } else if (complete === WlCompleteType.WL_COMPLETE_HANDLE) {
 
-        } else if (complete == WlCompleteType.WL_COMPLETE_NEXT) {
+        } else if (complete === WlCompleteType.WL_COMPLETE_NEXT) {
 
-        } else if (complete == WlCompleteType.WL_COMPLETE_TIMEOUT) {
+        } else if (complete === WlCompleteType.WL_COMPLETE_TIMEOUT) {
 
-        } else if (complete == WlCompleteType.WL_COMPLETE_LOOP) {
+        } else if (complete === WlCompleteType.WL_COMPLETE_LOOP) {
 
         }
       },
@@ -50,8 +52,9 @@ export class AudioModelKit {
     this.wlComponentController = new WlComponentController(this.wlPlayer);
   }
 
-  player(){
-    this.wlPlayer?.setSource(getContext(this).filesDir +'/click.mp3')
+  player(context:Context){
+    const source= `${context.filesDir}/click.mp3`
+    this.wlPlayer?.setSource(source)
     this.wlPlayer?.prepare()
   }
 
